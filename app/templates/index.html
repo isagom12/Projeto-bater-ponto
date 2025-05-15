@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head><title>Sistema de Ponto</title></head>
+<body>
+    <h1>Bater Ponto</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.nome.label }} {{ form.nome() }}<br>
+        {{ form.tipo.label }} {{ form.tipo() }}<br>
+        {{ form.submit() }}
+    </form>
+
+    <h2>Registros:</h2>
+    <ul>
+        {% for r in registros %}
+            <li>{{ r.nome }} - {{ r.tipo }} - {{ r.horario.strftime('%d/%m/%Y %H:%M:%S') }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
