@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Histórico de Pontos</title>
+</head>
+<body>
+    <h1>Histórico de Pontos</h1>
+
+    {% if pontos %}
+        <ul>
+            {% for ponto in pontos %}
+                <li>
+                    Usuário: {{ ponto.usuario.nome }}<br>
+                    Horário: {{ ponto.horario.strftime('%d/%m/%Y %H:%M:%S') }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhum ponto registrado ainda.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('index') }}">Voltar para a página inicial</a>
+</body>
+</html>
