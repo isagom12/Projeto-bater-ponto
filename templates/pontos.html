@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Histórico de Pontos</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registros de Pontos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
-    <h1>Histórico de Pontos</h1>
+    <h1>Registros de Pontos</h1>
 
     {% if pontos %}
-        <ul>
-            {% for ponto in pontos %}
-                <li>
-                    Usuário: {{ ponto.usuario.nome }}<br>
-                    Horário: {{ ponto.horario.strftime('%d/%m/%Y %H:%M:%S') }}
-                </li>
-            {% endfor %}
-        </ul>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Usuário</th>
+                    <th>Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ponto in pontos %}
+                    <tr>
+                        <td>{{ ponto.usuario.nome }}</td>
+                        <td>{{ ponto.horario.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
-        <p>Nenhum ponto registrado ainda.</p>
+        <p>Nenhum ponto registrado até o momento.</p>
     {% endif %}
 
-    <br>
-    <a href="{{ url_for('index') }}">Voltar para a página inicial</a>
+    <br />
+    <a href="{{ url_for('index') }}">Voltar para Registrar Ponto</a><br />
+    <a href="{{ url_for('cadastro') }}">Cadastrar novo usuário</a>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
