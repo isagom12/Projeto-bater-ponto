@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="msg-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <label for="nome">{{ form.nome.label }}</label>
+            {{ form.nome(id="nome") }}
+
+            <label for="senha">{{ form.senha.label }}</label>
+            {{ form.senha(id="senha") }}
+
+            {{ form.submit(class_="signin-btn") }}
+        </form>
+    </div>
+</body>
+</html>

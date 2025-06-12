@@ -4,36 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registrar Ponto</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}" />
 </head>
 <body>
-    <h1>Registrar Ponto</h1>
+    <div class="container">
+        <h1>Cadastro de Usuário</h1>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <p class="{% if category == 'danger' %}msg-danger{% else %}msg-success{% endif %}">
-            {{ message }}
-          </p>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="msg-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
 
-        <label for="nome">{{ form.nome.label }}</label><br />
-        {{ form.nome(size=30, id="nome") }}<br /><br />
+            <label for="nome">{{ form.nome.label }}</label>
+            {{ form.nome(class_="form-control", id="nome", type="text") }}
 
-        <label for="tipo">{{ form.tipo.label }}</label><br />
-        {{ form.tipo(id="tipo") }}<br /><br />
+            <label for="email">{{ form.email.label }}</label>
+            {{ form.email(class_="form-control", id="email", type="email") }}
 
-        {{ form.submit() }}
-    </form>
+            <label for="senha">{{ form.senha.label }}</label>
+            {{ form.senha(class_="form-control", id="senha", type="password") }}
 
-    <br />
-    <a href="{{ url_for('pontos') }}">Ver pontos registrados</a><br />
-    <a href="{{ url_for('cadastro') }}">Cadastrar novo usuário</a>
+            {{ form.submit(class_="btn btn-primary") }}
+        </form>
+
+        <div class="links">
+            <a href="{{ url_for('index') }}">
+                <button type="button">Voltar para tela inicial</button>
+            </a>
+            <div>
+                <a href="{{ url_for('pontos') }}">Ver pontos registrados</a> |
+                <a href="{{ url_for('index') }}">Registrar ponto</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

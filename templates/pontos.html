@@ -5,36 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registros de Pontos</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pontos.css') }}" />
 </head>
 <body>
-    <h1>Registros de Pontos</h1>
+    <div class="container">
+        <h1>Registros de Pontos</h1>
 
-    {% if pontos %}
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Usuário</th>
-                    <th>Horário</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for ponto in pontos %}
+        {% if pontos %}
+            <table>
+                <thead>
                     <tr>
-                        <td>{{ ponto.usuario.nome }}</td>
-                        <td>{{ ponto.horario.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                        <th>Usuário</th>
+                        <th>Horário</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Nenhum ponto registrado até o momento.</p>
-    {% endif %}
+                </thead>
+                <tbody>
+                    {% for ponto in pontos %}
+                        <tr>
+                            <td>{{ ponto.usuario.nome }}</td>
+                            <td>{{ ponto.horario.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="no-data">Nenhum ponto registrado até o momento.</div>
+        {% endif %}
 
-    <br />
-    <a href="{{ url_for('index') }}">Voltar para Registrar Ponto</a><br />
-    <a href="{{ url_for('cadastro') }}">Cadastrar novo usuário</a>
-
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+        <div class="links">
+            <a href="{{ url_for('index') }}">Voltar para Registrar Ponto</a> |
+            <a href="{{ url_for('cadastro') }}">Cadastrar novo usuário</a>
+        </div>
+    </div>
 </body>
 </html>

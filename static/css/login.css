@@ -1,0 +1,103 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #36d1c4 0%, #a96cf0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    padding: 48px 40px 32px 40px;
+    width: 400px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container h2 {
+    margin-bottom: 32px;
+    color: #555;
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+label {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f7f7f7;
+    margin-bottom: 8px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border: 1.5px solid #a96cf0;
+}
+
+.forgot {
+    font-size: 0.95rem;
+    color: #a96cf0;
+    text-decoration: underline;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.signin-btn {
+    width: 60%; /* diminui a largura do botão */
+    align-self: center; /* centraliza o botão no formulário */
+    padding: 14px 0;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+}
+
+.signin-btn:hover {
+    background: #444;
+}
+
+.signup-text {
+    margin-top: 24px;
+    font-size: 1rem;
+    color: #888;
+    text-align: center;
+}
+
+.signup-text a {
+    color: #a96cf0;
+    text-decoration: underline;
+    margin-left: 4px;
+}
