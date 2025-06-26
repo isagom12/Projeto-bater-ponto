@@ -70,3 +70,8 @@ def init_app(app):
             return redirect(url_for('index'))
 
         return render_template('cadastro.html', form=form)
+
+    @app.route('/relatorios')
+    def relatorios():
+     pontos = Ponto.query.order_by(Ponto.horario.desc()).all()
+     return render_template('relatorios.html', pontos=pontos)
